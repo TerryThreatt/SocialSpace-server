@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
-require('dotenv').config()
+const dotenv = require('dotenv').config();
 
 const pubsub = new PubSub();
 

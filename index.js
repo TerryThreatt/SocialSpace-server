@@ -5,8 +5,8 @@ const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
 require('dotenv').config()
 
+const uri = process.env.MONGODB
 const pubsub = new PubSub();
-console.log(process.env.MONGODB)
 const PORT = process.env.PORT || 3000;
 const server = new ApolloServer({
   typeDefs,
@@ -15,7 +15,7 @@ const server = new ApolloServer({
 });
 
 mongoose
-  .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true  })
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true  })
   .then(() => {
     console.log("MongoDB Connected");
     return server.listen({ port: PORT });
